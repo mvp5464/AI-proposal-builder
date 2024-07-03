@@ -1,9 +1,9 @@
-import OnboardingForm from "@/components/OnboardingForm";
+import Login from "@/components/pages/Login";
 
 export default function Home() {
   return (
     <>
-      <OnboardingForm />
+      <Login />
     </>
   );
 }

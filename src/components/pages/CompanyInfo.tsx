@@ -1,8 +1,10 @@
 "use client";
 import axios from "axios";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
-interface CompanyState {
+export interface CompanyState {
   name: string;
   logo: string;
   teamDetails: string;
@@ -12,7 +14,7 @@ interface CompanyState {
   pricing: string;
 }
 
-const OnboardingForm = () => {
+const CompanyInfo = () => {
   const [info, setInfo] = useState<CompanyState>({
     name: "",
     logo: "",
@@ -22,6 +24,12 @@ const OnboardingForm = () => {
     executiveSummary: "",
     pricing: "",
   });
+  const { status } = useSession();
+  const router = useRouter();
+
+  if (status === "authenticated") {
+    router.push("/generate-proposal");
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -109,4 +117,4 @@ const OnboardingForm = () => {
   );
 };
 
-export default OnboardingForm;
+export default CompanyInfo;
