@@ -33,6 +33,7 @@ export async function POST(req: NextRequest) {
         projects,
         executiveSummary,
         pricing,
+        userId: "", // change here
       },
     });
     return NextResponse.json({ message: company }, { status: 200 });

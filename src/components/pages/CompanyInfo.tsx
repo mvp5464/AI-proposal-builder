@@ -12,6 +12,7 @@ export interface CompanyState {
   projects: string;
   executiveSummary: string;
   pricing: string;
+  userId: string;
 }
 
 const CompanyInfo = () => {
@@ -23,13 +24,14 @@ const CompanyInfo = () => {
     projects: "",
     executiveSummary: "",
     pricing: "",
+    userId: "",
   });
-  const { status } = useSession();
+  const { status, data } = useSession();
   const router = useRouter();
-
-  if (status === "authenticated") {
-    router.push("/generate-proposal");
-  }
+  console.log({ data: data?.user?.email });
+  // if (status === "authenticated") {
+  //   router.push("/generate-proposal");
+  // }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,6 +44,7 @@ const CompanyInfo = () => {
       projects: info?.projects,
       executiveSummary: info?.executiveSummary,
       pricing: info?.pricing,
+      userId: "", // Chanage it either from here or from backend
     });
   };
 
