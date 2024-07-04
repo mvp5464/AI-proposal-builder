@@ -12,10 +12,11 @@ export default async function GenerateProposalPage() {
   if (!session) {
     redirect("/");
   }
+
   const companyInfo = await getCompanyDetail({ userId });
   if (companyInfo === null || !companyInfo) {
     redirect("/company-info");
   }
-  console.log({ companyInfo });
+
   return <GenerateProposal companyInfo={companyInfo} />;
 }
