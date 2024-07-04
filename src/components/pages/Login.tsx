@@ -3,6 +3,7 @@ import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Loader from "../icons/Loader";
+
 export default function Login() {
   const { status } = useSession();
   const [loading, setLoading] = useState<boolean>(false);
@@ -22,12 +23,13 @@ export default function Login() {
     <>
       <div className="min-h-screen flex items-center justify-center bg-gray-100">
         <button
+          className="px-4 py-2 bg-blue-500 text-white rounded"
+          disabled={loading}
           onClick={async () => {
             setLoading(true);
             await signIn("google");
             setLoading(false);
           }}
-          className="px-4 py-2 bg-blue-500 text-white rounded"
         >
           {loading ? "Loading..." : "Login with Google"}
         </button>

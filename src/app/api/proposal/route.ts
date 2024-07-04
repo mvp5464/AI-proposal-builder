@@ -4,11 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
   const { company }: { company: CompanyState } = await req.json();
-  console.log("0");
-  console.log(company.name);
   const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
-  console.log({ apiKey: process.env.GEMINI_API_KEY || "" });
-  console.log("1");
   const generationConfig = {
     temperature: 0.3,
   };
@@ -16,11 +12,10 @@ export async function POST(req: NextRequest) {
     model: "gemini-1.5-flash",
     generationConfig,
   });
-  console.log("2");
-  //   and elaborate on it with code only HTML body tag with tailwind css:
+  // and with only HTML code using tailwind css:
 
   const prompt = `
-      Create a business proposal for ${company.name} with the following details:
+      Create a business proposal with detail for ${company.name} with the following details:
       - Logo: ${company.logo}
       - Team Details: ${company.teamDetails}
       - Testimonials: ${company.testimonials}
@@ -31,8 +26,11 @@ export async function POST(req: NextRequest) {
   try {
     const result = await model.generateContent(prompt);
     const response = result.response.text();
-    console.log({ result });
-    console.log({ response });
+
+    // const bodyContentMatch = response.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+    // const bodyContent = bodyContentMatch ? bodyContentMatch[1] : "";
+    // let modifiedContent = bodyContent.replace(/class=/g, "className=");
+    // modifiedContent = modifiedContent.replace(/<img([^>]*?)>/g, "<img$1/>");
 
     return NextResponse.json(response, { status: 200 });
   } catch (error) {

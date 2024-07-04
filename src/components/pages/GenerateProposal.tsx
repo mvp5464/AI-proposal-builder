@@ -1,43 +1,61 @@
 "use client";
 import { useState } from "react";
 import axios from "axios";
+import Loader from "../icons/Loader";
 
-const GenerateProposal: React.FC = () => {
-  const [companyId, setCompanyId] = useState("");
+interface companyInfo {
+  id: string;
+  name: string;
+  logo: string;
+  teamDetails: string;
+  testimonials: string;
+  projects: string;
+  executiveSummary: string;
+  pricing: string;
+  userId: string;
+}
+
+const GenerateProposal = ({ companyInfo }: { companyInfo: companyInfo }) => {
   const [proposal, setProposal] = useState<any>("");
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const getProposal = async () => {
+    setLoading(true);
+    const res = await axios.post("/api/proposal", {
+      company: {
+        name: companyInfo.name,
+        logo: companyInfo.logo,
+        teamDetails: companyInfo.teamDetails,
+        testimonials: companyInfo.testimonials,
+        projects: companyInfo.projects,
+        executiveSummary: companyInfo.executiveSummary,
+        pricing: companyInfo.pricing,
+      },
+    });
+    setProposal(res.data);
+    setLoading(false);
+  };
+
+  if (loading) {
+    return (
+      <>
+        <Loader info={"Generating Your AI Proposal"} />
+      </>
+    );
+  }
 
   return (
-    <div className="p-4">
+    <div className="p-4  bg-slate-200">
       <h1 className="text-xl font-bold mb-4">Generate Proposal</h1>
-      <div className="mb-4">
-        <label className="block">Company ID</label>
-        <input
-          type="text"
-          value={companyId}
-          onChange={(e) => setCompanyId(e.target.value)}
-          className="w-full border p-2"
-        />
+      <div className="mb-4 flex gap-5 items-center">
+        <div>{companyInfo.name}</div>
+        <button
+          className="bg-blue-500 text-white px-4 py-2 rounded"
+          onClick={getProposal}
+        >
+          Generate
+        </button>
       </div>
-      <button
-        onClick={async () => {
-          const res = await axios.post("/api/proposal", {
-            company: {
-              name: "GepziDesiner",
-              logo: "www.GepziDesiner.com",
-              teamDetails: "1. Mahesh: team Leader\n2. Vijay: desiner",
-              testimonials: "1. They are very good desiner and works good",
-              projects: "1. www.mydesign.com \n2.www.newvlog.io",
-              executiveSummary: "We create website design for all",
-              pricing: "1. Basic plan: 400$\n2. Premium plan 800$",
-            },
-          });
-          console.log({ res: res.data });
-          setProposal(res.data);
-        }}
-        className="bg-blue-500 text-white px-4 py-2 rounded"
-      >
-        Generate
-      </button>
       {proposal && (
         <div className="mt-4 p-4 border">
           <h2 className="text-lg font-bold">Generated Proposal</h2>

@@ -20,8 +20,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Providers>
-          <Appbar />
-          {children}
+          <div className="bg-slate-200 w-full h-screen">
+            <Appbar />
+            {children}
+          </div>
         </Providers>
       </body>
     </html>

@@ -1,14 +1,13 @@
-// import db from "@/db";
-import { PrismaClient } from "@prisma/client";
-const db = new PrismaClient();
+import db from "@/db";
 
 export async function getCompanyDetail({ userId }: { userId: string }) {
   try {
-    const companyInfo = await db.company.findMany({
-      where: { id: userId },
+    const companyInfo = await db.company.findUnique({
+      where: { userId: userId },
     });
     return companyInfo;
   } catch (e) {
+    console.log({ e });
     return null;
   }
 }

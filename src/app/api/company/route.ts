@@ -1,8 +1,6 @@
 import { CompanyState } from "@/components/pages/CompanyInfo";
-import { PrismaClient } from "@prisma/client";
+import db from "@/db";
 import { NextRequest, NextResponse } from "next/server";
-
-const prisma = new PrismaClient();
 
 export async function POST(req: NextRequest) {
   const {
@@ -13,18 +11,11 @@ export async function POST(req: NextRequest) {
     projects,
     executiveSummary,
     pricing,
+    userId,
   }: CompanyState = await req.json();
-  console.log({
-    name,
-    logo,
-    teamDetails,
-    testimonials,
-    projects,
-    executiveSummary,
-    pricing,
-  });
+
   try {
-    const company = await prisma.company.create({
+    const company = await db.company.create({
       data: {
         name,
         logo,
@@ -33,7 +24,7 @@ export async function POST(req: NextRequest) {
         projects,
         executiveSummary,
         pricing,
-        userId: "", // change here
+        userId,
       },
     });
     return NextResponse.json({ message: company }, { status: 200 });

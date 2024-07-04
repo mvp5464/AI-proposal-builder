@@ -1,6 +1,5 @@
 "use client";
 import axios from "axios";
-import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
@@ -15,7 +14,9 @@ export interface CompanyState {
   userId: string;
 }
 
-const CompanyInfo = () => {
+const CompanyInfo = ({ userId }: { userId: string }) => {
+  const [loading, setLoading] = useState<boolean>(false);
+
   const [info, setInfo] = useState<CompanyState>({
     name: "",
     logo: "",
@@ -26,17 +27,13 @@ const CompanyInfo = () => {
     pricing: "",
     userId: "",
   });
-  const { status, data } = useSession();
   const router = useRouter();
-  console.log({ data: data?.user?.email });
-  // if (status === "authenticated") {
-  //   router.push("/generate-proposal");
-  // }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log({ info });
-    await axios.post("/api/company", {
+    setLoading(true);
+
+    const res = await axios.post("/api/company", {
       name: info?.name,
       logo: info?.logo,
       teamDetails: info?.teamDetails,
@@ -44,8 +41,11 @@ const CompanyInfo = () => {
       projects: info?.projects,
       executiveSummary: info?.executiveSummary,
       pricing: info?.pricing,
-      userId: "", // Chanage it either from here or from backend
+      userId: userId,
     });
+
+    if (res.statusText === "OK") router.push("/generate-proposal");
+    setLoading(false);
   };
 
   return (
@@ -113,8 +113,9 @@ const CompanyInfo = () => {
       <button
         type="submit"
         className="bg-blue-500 text-white px-4 py-2 rounded"
+        disabled={loading}
       >
-        Submit
+        {loading ? "Loading..." : "Submit"}
       </button>
     </form>
   );
