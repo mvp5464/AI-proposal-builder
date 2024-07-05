@@ -33,19 +33,25 @@ const CompanyInfo = ({ userId }: { userId: string }) => {
     e.preventDefault();
     setLoading(true);
     console.log({ userId });
-    const res = await axios.post("/api/company", {
-      name: info?.name,
-      logo: info?.logo,
-      teamDetails: info?.teamDetails,
-      testimonials: info?.testimonials,
-      projects: info?.projects,
-      executiveSummary: info?.executiveSummary,
-      pricing: info?.pricing,
-      userId,
-    });
-    console.log(res.statusText === "OK");
-    if (res.statusText === "OK") router.push("/generate-proposal");
-    setLoading(false);
+    try {
+      const res = await axios.post("/api/company", {
+        name: info?.name,
+        logo: info?.logo,
+        teamDetails: info?.teamDetails,
+        testimonials: info?.testimonials,
+        projects: info?.projects,
+        executiveSummary: info?.executiveSummary,
+        pricing: info?.pricing,
+        userId,
+      });
+      console.log({ res });
+      console.log(res.statusText === "OK");
+      if (res.statusText === "OK") router.push("/generate-proposal");
+      setLoading(false);
+    } catch (e) {
+      console.log({ e });
+      setLoading(false);
+    }
   };
 
   return (
