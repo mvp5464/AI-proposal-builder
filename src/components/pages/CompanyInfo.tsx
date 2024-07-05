@@ -32,7 +32,6 @@ const CompanyInfo = ({ userId }: { userId: string }) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    console.log({ userId });
     try {
       const res = await axios.post("/api/company", {
         name: info?.name,
@@ -44,12 +43,9 @@ const CompanyInfo = ({ userId }: { userId: string }) => {
         pricing: info?.pricing,
         userId,
       });
-      console.log({ res });
-      console.log(res.statusText === "OK");
       if (res.status === 200) router.push("/generate-proposal");
       setLoading(false);
     } catch (e) {
-      console.log({ e });
       setLoading(false);
     }
   };

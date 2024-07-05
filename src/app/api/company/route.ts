@@ -29,7 +29,6 @@ export async function POST(req: NextRequest) {
     });
     return NextResponse.json({ message: company }, { status: 200 });
   } catch (error) {
-    console.log({ error });
     return NextResponse.json(
       { message: "Error creating company", error },
       { status: 501 }
