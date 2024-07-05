@@ -46,7 +46,7 @@ const CompanyInfo = ({ userId }: { userId: string }) => {
       });
       console.log({ res });
       console.log(res.statusText === "OK");
-      if (res.statusText === "OK") router.push("/generate-proposal");
+      if (res.status === 200) router.push("/generate-proposal");
       setLoading(false);
     } catch (e) {
       console.log({ e });
