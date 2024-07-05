@@ -45,7 +45,7 @@ const GenerateProposal = ({ companyInfo }: { companyInfo: companyInfo }) => {
   }
 
   return (
-    <div className="p-4  bg-slate-200">
+    <div className="p-4  bg-slate-200 w-fit h-fit">
       <h1 className="text-xl font-bold mb-4">Generate Proposal</h1>
       <div className="mb-4 flex gap-5 items-center">
         <div>{companyInfo.name}</div>
