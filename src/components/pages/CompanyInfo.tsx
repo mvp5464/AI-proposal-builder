@@ -43,7 +43,7 @@ const CompanyInfo = ({ userId }: { userId: string }) => {
       pricing: info?.pricing,
       userId,
     });
-
+    console.log(res.statusText === "OK");
     if (res.statusText === "OK") router.push("/generate-proposal");
     setLoading(false);
   };
