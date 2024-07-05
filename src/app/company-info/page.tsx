@@ -9,7 +9,7 @@ export default async function CompanyPage() {
   //@ts-ignore
   const userId = session?.user.userId;
 
-  if (!session) {
+  if (!session || !userId) {
     redirect("/");
   }
   const companyInfo = await getCompanyDetail({ userId });

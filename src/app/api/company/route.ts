@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     console.log({ error });
     return NextResponse.json(
-      { message: "Error creating company" },
+      { message: "Error creating company", error },
       { status: 501 }
     );
   }

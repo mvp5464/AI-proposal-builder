@@ -32,7 +32,7 @@ const CompanyInfo = ({ userId }: { userId: string }) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-
+    console.log({ userId });
     const res = await axios.post("/api/company", {
       name: info?.name,
       logo: info?.logo,
@@ -41,7 +41,7 @@ const CompanyInfo = ({ userId }: { userId: string }) => {
       projects: info?.projects,
       executiveSummary: info?.executiveSummary,
       pricing: info?.pricing,
-      userId: userId,
+      userId,
     });
 
     if (res.statusText === "OK") router.push("/generate-proposal");
