@@ -78,20 +78,20 @@ export const ProposalComponent = ({
         <div className="w-full my-4 relative">
           <div className="flex justify-center ">
             <img src={"/template.png"} alt="" className="w-full " />
-            <div className="absolute left-[0%] top-2 ">
+            <div className="absolute left-[0%] top-[0.5%] right-[70%] bottom-[90%] overflow-hidden ">
               <img
                 src={info?.logo}
                 alt={`${info?.name} Logo`}
-                className="w-32 h-20"
+                className="w-[80%] h-[80%]"
               />
             </div>
-            <div className="absolute font-extrabold text-3xl top-8 bg-fuchsia-400s">
+            <div className="absolute md:font-extrabold md:text-3xl font-semibold top-[3%] left-[40%] right-[10%] bottom-[90%] overflow-hidden">
               {!isEdit ? (
                 <span>{info?.name}</span>
               ) : (
-                <div className="text-center">
+                <div className="">
                   <input
-                    className=" text-center bg-zinc-100 w-[90%]"
+                    className="  bg-zinc-100 w-[90%]"
                     type="text"
                     value={info?.name}
                     onChange={(e) => setInfo({ ...info, name: e.target.value })}
@@ -99,7 +99,7 @@ export const ProposalComponent = ({
                 </div>
               )}
             </div>
-            <div className="absolute left-[5%] font-bold right-[5%] top-[10rem] bg-fuchsia-400s">
+            <div className="absolute md:font-bold md:text-base text-xs left-[5%] right-[5%] top-[15%] bottom-[70%] overflow-hidden">
               {!isEdit ? (
                 <span>{info?.executiveSummary}</span>
               ) : (
@@ -115,7 +115,7 @@ export const ProposalComponent = ({
                 </div>
               )}
             </div>
-            <div className="absolute left-[5%] font-bold right-[5%] top-[23rem] bg-fuchsia-400s">
+            <div className="absolute md:font-bold md:text-base text-xs left-[5%] right-[5%] top-[33%] bottom-[50%]  overflow-hidden">
               {!isEdit ? (
                 <span>{info?.projects}</span>
               ) : (
@@ -129,7 +129,7 @@ export const ProposalComponent = ({
                 />
               )}
             </div>
-            <div className="absolute left-[5%] font-bold right-[5%] top-[36rem] bg-fuchsia-400s">
+            <div className="absolute md:font-bold md:text-base text-xs left-[5%] right-[5%] top-[53%] bottom-[33%] overflow-hidden">
               {!isEdit ? (
                 <span>{info?.testimonials}</span>
               ) : (
@@ -143,7 +143,7 @@ export const ProposalComponent = ({
                 />
               )}
             </div>
-            <div className="absolute left-[5%] font-bold right-[5%] top-[48rem] bg-fuchsia-400s">
+            <div className="absolute md:font-bold md:text-base text-xs left-[5%] right-[56%] top-[71%] bottom-[18%] overflow-hidden">
               {!isEdit ? (
                 <span>{info?.pricing}</span>
               ) : (
@@ -157,7 +157,7 @@ export const ProposalComponent = ({
                 />
               )}
             </div>
-            <div className="absolute left-[50%] font-bold right-[5%] top-[48rem] bg-fuchsia-400s">
+            <div className="absolute md:font-bold md:text-base text-xs left-[50%] right-[5%] top-[71%] bottom-[18%] overflow-hidden">
               {!isEdit ? (
                 <span>{info?.teamDetails}</span>
               ) : (
@@ -171,11 +171,11 @@ export const ProposalComponent = ({
                 />
               )}
             </div>
-            <div className="absolute left-[5%] font-bold right-[5%] bottom-[8.5rem] bg-fuchsia-400s">
+            <div className="absolute md:font-bold md:text-base text-xs left-[5%] right-[5%] top-[83%] bottom-[10%] overflow-hidden">
               We invite you to schedule a free consultation to discuss your
               project requirements and how {info.name} can help you build it.
             </div>
-            <div className="absolute flex flex-col left-[5%] font-bold right-[5%] bottom-[0rem] bg-fuchsia-400s">
+            <div className="absolute flex flex-col md:font-bold md:text-base text-xs left-[5%] right-[5%] top-[92.5%] bottom-[0%] overflow-hidden">
               <div>
                 <span>Email:</span>{" "}
                 {!isEdit ? (
