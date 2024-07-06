@@ -30,6 +30,9 @@ model Company {
   projects         String
   executiveSummary String
   pricing          String
+  email            String
+  phone            String
+  website          String
   User             User   @relation(fields: [userId], references: [userId])
   userId           String @unique
 }

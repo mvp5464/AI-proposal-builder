@@ -14,9 +14,9 @@ export default async function GenerateProposalPage() {
   }
 
   const companyInfo = await getCompanyDetail({ userId });
-  if (companyInfo === null || !companyInfo) {
+  if (!companyInfo) {
     redirect("/company-info");
   }
 
-  return <GenerateProposal companyInfo={companyInfo} />;
+  return <GenerateProposal companyInfo={companyInfo} userId={userId} />;
 }

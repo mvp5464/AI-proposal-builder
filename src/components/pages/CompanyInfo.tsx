@@ -11,6 +11,9 @@ export interface CompanyState {
   projects: string;
   executiveSummary: string;
   pricing: string;
+  email: string;
+  phone: string;
+  website: string;
   userId: string;
 }
 
@@ -26,6 +29,9 @@ const CompanyInfo = ({ userId }: { userId: string }) => {
     executiveSummary: "",
     pricing: "",
     userId: "",
+    email: "",
+    phone: "",
+    website: "",
   });
   const router = useRouter();
 
@@ -41,6 +47,9 @@ const CompanyInfo = ({ userId }: { userId: string }) => {
         projects: info?.projects,
         executiveSummary: info?.executiveSummary,
         pricing: info?.pricing,
+        email: info?.email,
+        phone: info?.phone,
+        website: info?.website,
         userId,
       });
       if (res.status === 200) router.push("/generate-proposal");
@@ -111,6 +120,36 @@ const CompanyInfo = ({ userId }: { userId: string }) => {
           onChange={(e) => setInfo({ ...info, pricing: e.target.value })}
           className="w-full border p-2"
         />
+      </div>
+      <div>Contact Information</div>
+      <div className="grid grid-cols-3 gap-3">
+        <div>
+          <label className="block">Email</label>
+          <input
+            type="text"
+            value={info?.email}
+            onChange={(e) => setInfo({ ...info, email: e.target.value })}
+            className="w-full border p-2"
+          />
+        </div>
+        <div>
+          <label className="block">Phone</label>
+          <input
+            type="text"
+            value={info?.phone}
+            onChange={(e) => setInfo({ ...info, phone: e.target.value })}
+            className="w-full border p-2"
+          />
+        </div>
+        <div>
+          <label className="block">Website</label>
+          <input
+            type="text"
+            value={info?.website}
+            onChange={(e) => setInfo({ ...info, website: e.target.value })}
+            className="w-full border p-2"
+          />
+        </div>
       </div>
       <button
         type="submit"

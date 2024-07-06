@@ -1,6 +1,6 @@
 import CompanyInfo from "@/components/pages/CompanyInfo";
 import { getCompanyDetail } from "@/db/companyInfo";
-import { authOptions, session } from "@/lib/auth";
+import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 
@@ -13,7 +13,7 @@ export default async function CompanyPage() {
     redirect("/");
   }
   const companyInfo = await getCompanyDetail({ userId });
-  if (!(companyInfo === null || !companyInfo)) {
+  if (!!companyInfo) {
     redirect("/generate-proposal");
   }
 

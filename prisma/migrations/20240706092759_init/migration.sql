@@ -18,6 +18,9 @@ CREATE TABLE "Company" (
     "projects" TEXT NOT NULL,
     "executiveSummary" TEXT NOT NULL,
     "pricing" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
+    "phone" TEXT NOT NULL,
+    "website" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
 
     CONSTRAINT "Company_pkey" PRIMARY KEY ("id")
