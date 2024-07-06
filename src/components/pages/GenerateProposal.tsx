@@ -62,7 +62,7 @@ const GenerateProposal = ({
 
   return (
     <>
-      <div className=" w-full h-screen">
+      <div className=" w-full h-full">
         <div className="p-4">
           <h1 className="text-xl font-bold mb-4">Generate Proposal</h1>
           <div className="mb-4 flex gap-5 items-center">

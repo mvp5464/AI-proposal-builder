@@ -143,7 +143,7 @@ export const ProposalComponent = ({
                 />
               )}
             </div>
-            <div className="absolute md:font-bold md:text-base text-xs left-[5%] right-[56%] top-[71%] bottom-[18%] overflow-hidden">
+            <div className="absolute md:font-bold md:text-base text-xs left-[5%] right-[0%] top-[71%] bottom-[18%] overflow-hidden">
               {!isEdit ? (
                 <span>{info?.pricing}</span>
               ) : (
