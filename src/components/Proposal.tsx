@@ -58,7 +58,7 @@ export const ProposalComponent = ({
 
   return (
     <>
-      <div className=" w-full h-fit bg-blue-200 overflow-hidden">
+      <div className=" w-full h-fit bg-blue-200 overflow-hidden md:max-w-screen-md mx-auto text-black dark:text-black">
         <div className=" flex justify-center items-center gap-3">
           <button
             className="bg-blue-500 text-white px-4 py-2 rounded"
@@ -77,12 +77,8 @@ export const ProposalComponent = ({
         </div>
         <div className="w-full my-4 relative">
           <div className="flex justify-center ">
-            <img
-              src={"/template.png"}
-              alt=""
-              className="w-full max-w-screen-md"
-            />
-            <div className="absolute left-[18rem] top-2 bg-fuchsia-400s">
+            <img src={"/template.png"} alt="" className="w-full " />
+            <div className="absolute left-[0%] top-2 ">
               <img
                 src={info?.logo}
                 alt={`${info?.name} Logo`}
@@ -103,7 +99,7 @@ export const ProposalComponent = ({
                 </div>
               )}
             </div>
-            <div className="absolute left-[19rem] font-bold right-[18rem] top-[10rem] bg-fuchsia-400s">
+            <div className="absolute left-[5%] font-bold right-[5%] top-[10rem] bg-fuchsia-400s">
               {!isEdit ? (
                 <span>{info?.executiveSummary}</span>
               ) : (
@@ -119,7 +115,7 @@ export const ProposalComponent = ({
                 </div>
               )}
             </div>
-            <div className="absolute left-[19rem] font-bold right-[18rem] top-[23rem] bg-fuchsia-400s">
+            <div className="absolute left-[5%] font-bold right-[5%] top-[23rem] bg-fuchsia-400s">
               {!isEdit ? (
                 <span>{info?.projects}</span>
               ) : (
@@ -133,7 +129,7 @@ export const ProposalComponent = ({
                 />
               )}
             </div>
-            <div className="absolute left-[19rem] font-bold right-[18rem] top-[36rem] bg-fuchsia-400s">
+            <div className="absolute left-[5%] font-bold right-[5%] top-[36rem] bg-fuchsia-400s">
               {!isEdit ? (
                 <span>{info?.testimonials}</span>
               ) : (
@@ -147,7 +143,7 @@ export const ProposalComponent = ({
                 />
               )}
             </div>
-            <div className="absolute left-[19rem] font-bold right-[18rem] top-[48rem] bg-fuchsia-400s">
+            <div className="absolute left-[5%] font-bold right-[5%] top-[48rem] bg-fuchsia-400s">
               {!isEdit ? (
                 <span>{info?.pricing}</span>
               ) : (
@@ -161,7 +157,7 @@ export const ProposalComponent = ({
                 />
               )}
             </div>
-            <div className="absolute left-[40rem] font-bold right-[18rem] top-[48rem] bg-fuchsia-400s">
+            <div className="absolute left-[50%] font-bold right-[5%] top-[48rem] bg-fuchsia-400s">
               {!isEdit ? (
                 <span>{info?.teamDetails}</span>
               ) : (
@@ -175,11 +171,11 @@ export const ProposalComponent = ({
                 />
               )}
             </div>
-            <div className="absolute left-[19rem] font-bold right-[18rem] bottom-[8.5rem] bg-fuchsia-400s">
+            <div className="absolute left-[5%] font-bold right-[5%] bottom-[8.5rem] bg-fuchsia-400s">
               We invite you to schedule a free consultation to discuss your
               project requirements and how {info.name} can help you build it.
             </div>
-            <div className="absolute flex flex-col left-[19rem] font-bold right-[18rem] bottom-[0rem] bg-fuchsia-400s">
+            <div className="absolute flex flex-col left-[5%] font-bold right-[5%] bottom-[0rem] bg-fuchsia-400s">
               <div>
                 <span>Email:</span>{" "}
                 {!isEdit ? (

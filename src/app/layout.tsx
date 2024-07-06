@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Providers>
-          <div className="bg-blue-200">
+          <div className="bg-blue-200 text-black dark:text-black">
             <Appbar />
             {children}
           </div>
