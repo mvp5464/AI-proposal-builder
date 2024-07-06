@@ -26,6 +26,7 @@ export async function POST(req: NextRequest) {
       - Team Details: ${company.teamDetails}
       - Testimonials: ${company.testimonials}
       - Previous Projects: ${company.projects}
+      - Executive Summary: ${company.executiveSummary}
       - Pricing: ${company.pricing}
       `;
   try {
