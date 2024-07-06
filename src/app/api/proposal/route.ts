@@ -19,13 +19,12 @@ export async function POST(req: NextRequest) {
     model: "gemini-1.5-flash",
     generationConfig,
   });
+  // - Testimonials: ${company.testimonials}
+  // - Previous Projects: ${company.projects}
 
   const prompt = `
-      Create a Executive summary in around 50 words for ${company.name} with the following details:
-      - Logo: ${company.logo}
+      Create a Executive summary in around 60 words for ${company.name} with the following details:
       - Team Details: ${company.teamDetails}
-      - Testimonials: ${company.testimonials}
-      - Previous Projects: ${company.projects}
       - Executive Summary: ${company.executiveSummary}
       - Pricing: ${company.pricing}
       `;

@@ -33,10 +33,10 @@ const GenerateProposal = ({
     const res = await axios.post("/api/proposal", {
       company: {
         name: myCompanyInfo.name,
-        logo: myCompanyInfo.logo,
         teamDetails: myCompanyInfo.teamDetails,
-        testimonials: myCompanyInfo.testimonials,
-        projects: myCompanyInfo.projects,
+        // testimonials: myCompanyInfo.testimonials,
+        // projects: myCompanyInfo.projects,
+        executiveSummary: myCompanyInfo.executiveSummary,
         pricing: myCompanyInfo.pricing,
       },
     });
